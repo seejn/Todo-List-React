@@ -1,18 +1,35 @@
 import React from "react";
 import { useState } from "react";
 export default function (props) {
-    const [taskName, setTask] = useState("");
+    /*
+        Form Component
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        taskName === "" ? alert("Field Required!!!") : props.addTask(taskName);
-        setTask("");
-    };
+        parameter:
+            props: all properties passed on to <Form /> component
+        returns: 
+            template: form template to add new task
+    */
 
+    const [taskName, setTask] = useState(""); // initializing taskName to ""
+
+    // function to handleChange on input field
     const handleChange = (event) => {
-        let input = event.target.value;
-        setTask(input);
+        let input = event.target.value; // user input value on input field
+        setTask(input); // setting task state to recent user input value
     };
+
+    // function to handleSubmit on add new task form submitted
+    const handleSubmit = (event) => {
+        event.preventDefault(); // prevent form from submission
+
+        /*
+            validating task field for blank
+            validation success: addTask(taskName) 
+        */
+        taskName === "" ? alert("Field Required!!!") : props.addTask(taskName);
+        setTask(""); // resetting task state to ""
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <h2 className='label-wrapper'>
@@ -26,7 +43,7 @@ export default function (props) {
                 className='input input__lg'
                 name='text'
                 autoComplete='off'
-                value={taskName}
+                value={taskName} // setting default value to current task state
                 onChange={handleChange}
                 placeholder='Enter Your Task'
             />

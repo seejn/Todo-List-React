@@ -4,6 +4,13 @@ import App from "./App.jsx";
 
 import "./assets/css/style.css";
 
+/*
+    initializing tasks array with objects of task
+    properties:
+        id: id of task,
+        name: name of task,
+        completed: state of task
+*/
 const tasks = [
     {
         id: "todo-1",
